@@ -1,0 +1,83 @@
+run:
+  deadline: 1m
+  tests: false
+  skip-files:
+    - "testing.go"
+    - ".*\\.pb\\.go"
+    - ".*\\.gen\\.go"
+  skip-dirs:
+    - mocks
+  modules-download-mode: readonly
+
+linters-settings:
+  maligned:
+    suggest-new: true
+  goconst:
+    min-len: 5
+    min-occurrences: 4
+  misspell:
+    locale: US
+  exhaustive:
+    check-generated: false
+    default-signifies-exhaustive: true
+  whitespace:
+    multi-if: true
+    multi-func: true
+  nestif:
+    min-complexity: 10
+  revive:
+    # see https://github.com/mgechev/revive#available-rules for details.
+    ignore-generated-header: true
+    severity: warning
+    rules:
+      - name: exported
+        disabled: true
+      - name: var-naming
+        disabled: true
+  gosec:
+    config:
+      G306: "0644"
+  gocognit:
+    min-complexity: 35
+  # custom:
+  #   error_style:
+  #     path: .bin/error_style/error_style_plugin.so
+  #     description: checks that the error style is the same in all app
+  #     original-url: github.com/MrEhbr/app/cmd/error_style
+issues:
+  fix: true
+
+linters:
+  disable-all: true
+  enable:
+    - asciicheck
+    - bodyclose
+    - depguard
+    - dogsled
+    - errcheck
+    - exhaustive
+    - exportloopref
+    - goconst
+    - gofumpt
+    - goimports
+    - gosimple
+    - govet
+    - ineffassign
+    - misspell
+    - nakedret
+    - nolintlint
+    - prealloc
+    - staticcheck
+    - typecheck
+    - unconvert
+    - unparam
+    - unused
+    - whitespace
+    - dupl
+    - gocognit
+    - gocyclo
+    - misspell
+    - nestif
+    - stylecheck
+    - noctx
+    # - error_style
