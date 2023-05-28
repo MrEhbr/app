@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+make go.lint GO_LINT_OPTS=--fast
