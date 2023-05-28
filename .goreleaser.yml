@@ -1,0 +1,36 @@
+before:
+  hooks:
+    - go mod download
+builds:
+  - goos: [linux, darwin, windows]
+    goarch: [386, amd64, arm, arm64]
+    flags:
+      - "-a"
+    ldflags:
+      - '-extldflags "-static"'
+      - -s -w -X main.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.Date}} -X main.builtBy=goreleaser
+    env:
+      - CGO_ENABLED=0
+    main: ./cmd/analyzer/error_style/main.go
+    binary: error_style
+
+archives:
+  - wrap_in_directory: true
+    replacements:
+      darwin: Darwin
+      linux: Linux
+      windows: Windows
+      386: i386
+      amd64: x86_64
+      name_template: "error_style_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+
+checksum:
+  name_template: "checksums.txt"
+snapshot:
+  name_template: "{{ .Tag }}-next"
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - "^docs:"
+      - "^test:"
