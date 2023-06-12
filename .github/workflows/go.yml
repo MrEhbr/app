@@ -33,7 +33,7 @@ jobs:
       matrix:
         golangci_lint: [v1.52]
     steps:
-      - uses: actions/checkout@v3.5.2
+      - uses: actions/checkout@v3.5.3
       - name: golangci-lint
         uses: golangci/golangci-lint-action@v3.5.0
         with:
@@ -49,7 +49,7 @@ jobs:
       matrix:
         golang: [1.19.x]
     steps:
-      - uses: actions/checkout@v3.5.2
+      - uses: actions/checkout@v3.5.3
       - name: Install Go
         uses: actions/setup-go@v4
         with:
@@ -67,7 +67,7 @@ jobs:
       OS: macos-latest
       GOLANG: ${{ matrix.golang }}
     steps:
-      - uses: actions/checkout@v3.5.2
+      - uses: actions/checkout@v3.5.3
       - name: Install Go
         uses: actions/setup-go@v4
         with:
@@ -104,7 +104,7 @@ jobs:
       OS: ubuntu-latest
       GOLANG: ${{ matrix.golang }}
     steps:
-      - uses: actions/checkout@v3.5.2
+      - uses: actions/checkout@v3.5.3
       - name: Install Go
         uses: actions/setup-go@v4
         with:
