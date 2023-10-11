@@ -3,7 +3,7 @@ module github.com/MrEhbr/app
 go 1.19
 
 require (
-	github.com/google/go-cmp v0.5.8
+	github.com/google/go-cmp v0.6.0
 	mvdan.cc/gofumpt v0.4.0
 )
 
