@@ -268,6 +268,11 @@ func isStringConst(pass *analysis.Pass, expr ast.Expr) (string, bool) {
 }
 
 func stringConst(pass *analysis.Pass, expr ast.Expr) string {
+	defer func() {
+		if r := recover(); r != nil {
+			fmt.Println("Recovered in f", r)
+		}
+	}()
 	val := pass.TypesInfo.ObjectOf(expr.(*ast.Ident)).(*types.Const).Val()
 	return constant.StringVal(val)
 }
